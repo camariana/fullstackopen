@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+import blogService from '../../../services/blogs/blogs'
+
 const initialState = [
   {
     _id: '5a422a851b54a676234d17f7',
@@ -51,8 +53,23 @@ const blogsSlice = createSlice({
   initialState,
   reducers: {
 
+    setBlogs (state, action) {
+      return action.payload
+    }
+
   }
 
 })
+
+export const {
+  setBlogs
+} = blogsSlice.actions
+
+export const initialBlogs = () => {
+  return async dispatch => {
+    const blogs = await blogService.getAll()
+    dispatch(setBlogs(blogs))
+  }
+}
 
 export default blogsSlice.reducer
