@@ -1,19 +1,25 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { initialBlogs } from '../redux/features/blogs/blogsSlice'
 
 const App = () => {
+  const dispatch = useDispatch()
+  const blogs = useSelector( state => state.blogs )
 
-  // const blogs = useSelector( state => state.blogs )
-  // console.log(blogs);
-
+  useEffect(() => {
+    dispatch(initialBlogs)
+  }, [dispatch])
 
   return (
-    <div>
-       <p>
-        Peace
-      </p>
-    </div>
+    <ul>
+       {
+        blogs.map((blog, index) => 
+        <li key={index}>
+          {blog.title}
+        </li>
+        )
+       }
+    </ul>
   )
 }
 
