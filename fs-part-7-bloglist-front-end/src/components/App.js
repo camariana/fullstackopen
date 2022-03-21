@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { initialBlogs } from '../redux/features/blogs/blogsSlice'
+import { initialBlogs } from '../redux/reducers/blogs/blogsSlice'
 
 const App = () => {
   const dispatch = useDispatch()
