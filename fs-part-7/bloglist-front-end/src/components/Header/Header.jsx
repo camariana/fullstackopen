@@ -7,13 +7,13 @@ import User from '../_includes/User'
 
 
 
-const Header = () => {
+const Header = ({ user }) => {
   return (
     <header className='header'>
       <div className='header__contain'>
         <Logo />
         <Nav />
-        <User />
+        <User user={user} />
       </div>
     </header>
   )
