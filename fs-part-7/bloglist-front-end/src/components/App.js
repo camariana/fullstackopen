@@ -14,6 +14,7 @@ import Blogs from './Blog/Blogs'
 import Blog from './Blog/Blog'
 import Login from './Login/Login'
 import Users from './Users/Users'
+import NewBlog from './Blog/NewBlog'
 
 
 const App = () => {
@@ -35,9 +36,10 @@ const App = () => {
   return (
     <div className='page'>
       <Header user={user} />
+
+      <NewBlog />
+
       <Routes>
-       
-        
         <Route path='/blogs/:id' element={<Blog blogs={blogs} />} />
         <Route path='/blogs' element={<Blogs blogs={blogs} />} />
 

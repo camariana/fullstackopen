@@ -10,8 +10,9 @@ const Login = ({ user }) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const onSubmit = (event) => {
+  const handleLogin = (event) => {
     event.preventDefault()
+
     dispatch(initialUser('Matti Luukkainen'))
     navigate('/')
   }
@@ -19,7 +20,8 @@ const Login = ({ user }) => {
   return (
     <div>
       <h2>Login</h2>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleLogin}>
+        
         user: <input type='text' />
         password: <input type='password' />
         <button type='submit'>
