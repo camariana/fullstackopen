@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import LikeButton from '../LikeButton/LikeButton'
 
 const Blogs = ({ blogs }) => {
   return (
@@ -7,16 +8,19 @@ const Blogs = ({ blogs }) => {
       {
         blogs.map(blog =>
           <li className='list__item' key={blog.id}>
-            <Link to={`/blogs/${blog.id}`}>
               <div className='list__primary'>
                 <h2>
-                  {blog.title}
+                  <Link to={`/blogs/${blog.id}`}>
+                    {blog.title}
+                  </Link>
                 </h2>
+                <p>
+                  {blog.likes}
+                </p>
               </div>
               <div className='list__secondary'>
-
+                <LikeButton id={blog.id}/>
               </div>
-            </Link>
           </li>          
         )
       }

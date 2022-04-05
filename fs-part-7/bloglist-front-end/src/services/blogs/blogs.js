@@ -8,20 +8,26 @@ const getAll = async () => {
 }
 
 const createNew = async content => {
-  const object = content
-  const response = await axios.post(baseUrl, object)
+  const response = await axios.post(baseUrl, content)
   return response.data
 }
 
-const update = async (id, newObject) => {
-  const response = await axios.put(`${baseUrl}/${id}`, newObject)
+const update = async (id, content) => {
+  const response = await axios.put(`${baseUrl}/${id}`, content)
+  return response.data
+}
+
+
+const remove = async id => {
+  const response = await axios.delete(`${baseUrl}/${id}`)
   return response.data
 }
 
 const blogService = { 
   getAll,
   createNew,
-  update
+  update,
+  remove
 }
 
 export default blogService

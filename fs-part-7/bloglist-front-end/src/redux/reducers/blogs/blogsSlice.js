@@ -24,16 +24,38 @@ const blogsSlice = createSlice({
 
     setBlogs (state, action) {
       return action.payload
+    },
+
+    likeAdded (state, action) {
+      const id = action.payload.id
+      const blogToLike = state.find(blog => blog.id === id)
+
+      console.log(blogToLike);
+
+      const changedBlog = {
+        ...blogToLike,
+        likes: blogToLike.likes + 1
+      }
+
+      return state.map(blog => blog.id !== id ? blog : changedBlog)
+      
     }
 
   }
 
 })
 
-export const {
-  setBlogs,
-  appendBlog
-} = blogsSlice.actions
+// Actions generated from the slice
+export const { setBlogs,  appendBlog, likeAdded } = blogsSlice.actions
+
+// The reducer
+export default blogsSlice.reducer
+
+
+
+
+
+// Asynchronous action and redux thunk
 
 export const initialBlogs = () => {
   return async dispatch => {
@@ -43,12 +65,16 @@ export const initialBlogs = () => {
 }
 
 export const createBlog = content => {
-
-  console.log();
   return async dispatch => {
     const blog = await blogService.createNew(content)
     dispatch(appendBlog(blog))
   }
 }
 
-export default blogsSlice.reducer
+export const likeBlog = (content) => {
+  return async dispatch => {
+    const blog = await blogService.update(content.id, content)
+    dispatch(likeAdded(blog))
+  }
+}
+

@@ -6,7 +6,7 @@ import { createBlog } from '../../redux/reducers/blogs/blogsSlice'
 
 const NewBlog = () => {
 
-  const dispatch = useDispatch
+  const dispatch = useDispatch()
 
   // const handleChange = (event) => {
   //   const { name, value } = event.target
@@ -19,7 +19,8 @@ const NewBlog = () => {
       title: event.target.title.value,
       author: event.target.author.value,
       url: event.target.url.value,
-      likes: 0
+      likes: 0,
+      date: new Date().toISOString()
     }
 
     event.target.title.value = ''
