@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import LikeButton from '../LikeButton/LikeButton'
+import DeleteButton from '../Buttons/DeleteButton'
+import LikeButton from '../Buttons/LikeButton'
 
 const Blogs = ({ blogs }) => {
   return (
@@ -19,7 +20,8 @@ const Blogs = ({ blogs }) => {
                 </p>
               </div>
               <div className='list__secondary'>
-                <LikeButton id={blog.id}/>
+                <LikeButton id={blog.id} />
+                <DeleteButton id={blog.id} />
               </div>
           </li>          
         )
