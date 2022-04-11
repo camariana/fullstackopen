@@ -2,34 +2,49 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import usersService from "../../../services/users/users";
 
-const initialState = [
-  {
-    id: 1,
-    username: "mluukkai",
-    name: "Matti Luukkainen",
-    password: "secret"
-  }
-]
+const initialState = {
+  users: [],
+  user: null,
+  status: 'idle',
+  error: null
+}
 
 const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
     setUsers (state, action) {
-      return action.payload
+      state.users = action.payload
+    },
+
+    setUser (state, action) {
+      state.user = action.payload
     }
   }
 })
 
-export const {
-  setUsers
-} = usersSlice.actions
 
-export const initialUsers = () => {
+// Actions generated from the slice
+export const { setUsers, setUser } = usersSlice.actions
+
+// Selectors
+export const selectAllUsers = state => state.users
+
+export default usersSlice.reducer
+
+
+
+// Thunks
+export const getUsers = () => {
   return async dispatch => {
     const users = await usersService.getAll()
     dispatch(setUsers(users))
   }
 }
 
-export default usersSlice.reducer
+export const initialUser = user => {
+  return dispatch => {
+    dispatch(setUser(user))
+  }
+}
+
