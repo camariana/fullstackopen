@@ -27,18 +27,15 @@ const blogsSlice = createSlice({
     },
 
     likeAdded (state, action) {
-      const id = action.payload.id
-      const blogToLike = state.find(blog => blog.id === id)
+      const changedBlog = action.payload
+      return state.map(blog => blog.id !== changedBlog.id ? blog : changedBlog)
+    },
 
-      console.log(blogToLike);
-
-      const changedBlog = {
-        ...blogToLike,
-        likes: blogToLike.likes + 1
-      }
-
-      return state.map(blog => blog.id !== id ? blog : changedBlog)
-      
+    deleteAdded (state, action) {
+      // here the deletedBlog is only the id that is coming from the payload
+      const deletedBlog = action.payload
+      console.log(deletedBlog);
+      return state.filter((blog) => blog.id !== deletedBlog )
     }
 
   }
@@ -46,7 +43,7 @@ const blogsSlice = createSlice({
 })
 
 // Actions generated from the slice
-export const { setBlogs,  appendBlog, likeAdded } = blogsSlice.actions
+export const { setBlogs,  appendBlog, likeAdded, deleteAdded } = blogsSlice.actions
 
 // The reducer
 export default blogsSlice.reducer
@@ -55,8 +52,7 @@ export default blogsSlice.reducer
 
 
 
-// Asynchronous action and redux thunk
-
+// Asynchronous actions and redux thunk
 export const initialBlogs = () => {
   return async dispatch => {
     const blogs = await blogService.getAll()
@@ -71,10 +67,23 @@ export const createBlog = content => {
   }
 }
 
-export const likeBlog = (content) => {
+export const likeBlog = content => {
   return async dispatch => {
-    const blog = await blogService.update(content.id, content)
+    const changedBlog = {
+      ...content,
+      likes: content.likes + 1
+    }
+    
+    const blog = await blogService.update(changedBlog.id, changedBlog)
     dispatch(likeAdded(blog))
+  }
+}
+
+export const deleteBlog = content => {
+  return async dispatch => {
+    // The delete those not return data as response, so we just await and pass in content.id
+    await blogService.remove(content.id)
+    dispatch(deleteAdded(content.id))
   }
 }
 
