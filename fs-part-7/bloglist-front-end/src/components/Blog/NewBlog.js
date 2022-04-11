@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 
 import { createBlog } from '../../redux/reducers/blogs/blogsSlice'
+import { createNotification } from '../../redux/reducers/notification/notificationSlice'
 
 
 const NewBlog = () => {
@@ -28,6 +29,7 @@ const NewBlog = () => {
     event.target.url.value = ''
     
     dispatch(createBlog(content))
+    dispatch(createNotification(`Blog ${content.title} by ${content.author} created`, 5))
   }
 
   return (
