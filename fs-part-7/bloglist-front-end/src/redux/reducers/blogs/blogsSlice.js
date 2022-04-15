@@ -49,11 +49,17 @@ export const { setBlogs,  appendBlog, likeAdded, deleteAdded } = blogsSlice.acti
 export default blogsSlice.reducer
 
 
+// Selectors
+export const selectBlogs = state => state.blogs
 
+export const selectBlogById = (state, blogId) =>
+state.blogs.find((blog) => {
+  return blog.id === blogId
+})
 
 
 // Asynchronous actions and redux thunk
-export const initialBlogs = () => {
+export const getBlogs = () => {
   return async dispatch => {
     const blogs = await blogService.getAll()
     dispatch(setBlogs(blogs))
