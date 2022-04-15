@@ -11,14 +11,17 @@ const userSlice = createSlice({
 })
 
 
-export const {
-  setUser 
-} = userSlice.actions
+export const { setUser } = userSlice.actions
 
-export const initialUser = (user) => {
+export default userSlice.reducer
+
+//Selector
+export const selectUser = state => state.user
+
+// Action 
+export const getUser = (user) => {
   return dispatch => {
     dispatch(setUser(user))
   }
 }
 
-export default userSlice.reducer
