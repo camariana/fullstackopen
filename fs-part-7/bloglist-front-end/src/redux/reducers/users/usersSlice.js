@@ -2,36 +2,31 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import usersService from "../../../services/users/users";
 
-const initialState = {
-  users: [],
-  user: null,
-  status: 'idle',
-  error: null
-}
+const initialState = []
 
 const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
     setUsers (state, action) {
-      state.users = action.payload
-    },
-
-    setUser (state, action) {
-      state.user = action.payload
+      return action.payload
     }
   }
 })
 
 
 // Actions generated from the slice
-export const { setUsers, setUser } = usersSlice.actions
-
-// Selectors
-export const selectAllUsers = state => state.users
+export const { setUsers } = usersSlice.actions
 
 export default usersSlice.reducer
 
+// Selector
+export const selectUsers = state => state.users
+
+export const selectUserById = (state, userId) => 
+state.users.find((user) => {
+  return user.id === userId
+})
 
 
 // Thunks
@@ -41,10 +36,3 @@ export const getUsers = () => {
     dispatch(setUsers(users))
   }
 }
-
-export const initialUser = user => {
-  return dispatch => {
-    dispatch(setUser(user))
-  }
-}
-

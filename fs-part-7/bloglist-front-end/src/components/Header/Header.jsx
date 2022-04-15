@@ -3,11 +3,17 @@ import Logo from '../_includes/Logo'
 import Nav from '../_includes/Nav'
 import User from '../_includes/User'
 
+import { useSelector } from 'react-redux'
+
+import { selectUser } from '../../redux/reducers/users/userSlice'
 
 
 
+const Header = () => {
+  const user = useSelector(selectUser)
 
-const Header = ({ user }) => {
+  console.log(user);
+
   return (
     <header className='header'>
       <div className='header__contain'>
