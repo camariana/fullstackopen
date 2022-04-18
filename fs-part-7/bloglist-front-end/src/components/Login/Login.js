@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
-import { initialUser } from '../../redux/reducers/users/userSlice'
+import { getUser } from '../../redux/reducers/users/userSlice'
 
 
 
@@ -13,7 +13,7 @@ const Login = ({ user }) => {
   const handleLogin = (event) => {
     event.preventDefault()
 
-    dispatch(initialUser('Matti Luukkainen'))
+    dispatch(getUser('Matti Luukkainen'))
     navigate('/')
   }
 
