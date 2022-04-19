@@ -88,26 +88,51 @@ let books = [
   },
 ]
 
+
+/*  
+  Add bookCount filed to contain the number of books the author has written to
+  you'll need to add a bookCount resolver to the Author type for this to work
+*/
+
 const typeDefs = gql`
   type Book {
     title: String!
     published: String!
     author: String!
     id: ID!
-    genres: String!
+    genres: [String!]!
+  }
+
+ 
+  type Author {
+    name: String!
+    id: ID!
+    born: Int
+    bookCount: Int!  
   }
 
   type Query {
     bookCount: Int!
     authorCount: Int!
+    allBooks: [Book!]!
+    allAuthors: [Author!]!
   }
 `
 
 const resolvers = {
   Query: {
     bookCount: () => books.length,
-    authorCount: () => authors.length
+    authorCount: () => authors.length,
+    allBooks: () => books,
+    allAuthors: () => authors,
+  },
+
+  Author: {
+    bookCount: (root) => {
+      return books.filter(book => book.author === root.name).length
+    }
   }
+  
 }
 
 const server = new ApolloServer({
