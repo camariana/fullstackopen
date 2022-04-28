@@ -1,17 +1,25 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import SignoutButton from '../Buttons/SignoutButton'
+
+import LogoutButton from '../Buttons/LogoutButton'
 
 const User = ({ user }) => {
+  
+  const handleLogout = () => {
+    window.localStorage.removeItem('loggedInBlogAppUser')
+    window.location.reload()
+    return false
+  }
+
   return (
     <div className='user'>
       {
         user
         ? <div>
             <span>
-              { user }
+              { user.name }
             </span>
-            <SignoutButton />
+            <LogoutButton handleLogout={handleLogout} />
             
           </div>
         : <Link className='button button--link' to={'/login'}>

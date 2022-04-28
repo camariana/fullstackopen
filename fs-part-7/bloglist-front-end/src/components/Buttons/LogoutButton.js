@@ -1,15 +1,15 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 import { getUser } from '../../redux/reducers/users/userSlice'
 
 
-const SignoutButton = ({ id }) => {
+const LogoutButton = ({ handleLogout }) => {
 
   const dispatch = useDispatch()  
   
   return (
-    <button className='button' onClick={() => dispatch(getUser(null))}>
+    <button className='button' onClick={() => dispatch(getUser(handleLogout()))}>
       <svg 
         xmlns="http://www.w3.org/2000/svg" 
         width="16" 
@@ -23,4 +23,4 @@ const SignoutButton = ({ id }) => {
   )
 }
 
-export default SignoutButton
+export default LogoutButton
