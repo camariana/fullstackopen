@@ -1,7 +1,7 @@
 import React from 'react'
-import Logo from '../_includes/Logo'
-import Nav from '../_includes/Nav'
-import User from '../_includes/User'
+import Logo from '../Logo/Logo'
+import Nav from '../Nav/Nav'
+import User from '../User/User'
 
 import { useSelector } from 'react-redux'
 
