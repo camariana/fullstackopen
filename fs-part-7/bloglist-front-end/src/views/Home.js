@@ -1,12 +1,14 @@
 import React from 'react'
+import Masthead from '../components/Masthead/Masthead'
 
 const Home = () => {
   return (
-    <div>
-      <p>
-        Welcome to my blog
-      </p>
-    </div>
+    <>
+      <Masthead />
+      <main>
+        The home page
+      </main>
+    </>
   )
 }
 
