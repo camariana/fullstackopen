@@ -1,12 +1,12 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { likeBlog } from '../../redux/reducers/blogs/blogsSlice'
+import { likeBlog, selectBlogs } from '../../redux/reducers/blogs/blogsSlice'
 
 
 const LikeButton = ({ id }) => {
   const dispatch = useDispatch()
-  const blogs = useSelector( state => state.blogs )
+  const blogs = useSelector(selectBlogs)
 
   const like = id => {
     const likedBlog = blogs.find((blog) => blog.id === id)
@@ -15,7 +15,7 @@ const LikeButton = ({ id }) => {
   
 
   return (
-    <button className='button' onClick={() => like(id)}>
+    <button className='button button--tertiary' onClick={() => like(id)}>
       👍
     </button>
   )
