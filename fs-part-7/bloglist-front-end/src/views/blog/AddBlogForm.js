@@ -1,5 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 import { createBlog } from '../../redux/reducers/blogs/blogsSlice'
 import { createNotification } from '../../redux/reducers/notification/notificationSlice'
@@ -8,10 +9,7 @@ import { createNotification } from '../../redux/reducers/notification/notificati
 const NewBlog = () => {
 
   const dispatch = useDispatch()
-
-  // const handleChange = (event) => {
-  //   const { name, value } = event.target
-  // }
+  const navigate = useNavigate()
 
   const addBlog = async (event) => {
     event.preventDefault()
@@ -21,7 +19,6 @@ const NewBlog = () => {
       author: event.target.author.value,
       url: event.target.url.value,
       likes: 0,
-      date: new Date().toISOString()
     }
 
     event.target.title.value = ''
@@ -30,13 +27,16 @@ const NewBlog = () => {
     
     dispatch(createBlog(content))
     dispatch(createNotification(`Blog ${content.title} by ${content.author} created`, 5))
+    navigate('/blogs')
   }
 
   return (
-    <div>
-      <h2>Create a New Blog</h2>
-      <form onSubmit={addBlog}>
-      <div>
+    <>
+    <section className='center-page'>
+      <div className='center-page__inner'>
+        <h2 className='center-page__title'>Create a New Blog</h2>
+        <form onSubmit={addBlog} className="form">
+      <div className='form__group'>
           <label htmlFor="title">Title</label>
           <input
             id="title"
@@ -44,9 +44,10 @@ const NewBlog = () => {
             //value={title}
             name="title"
             //onChange={handleChange}
+            required
           />
         </div>
-        <div>
+        <div className='form__group'>
           <label htmlFor="author">Author</label>
           <input
             id="author"
@@ -54,9 +55,10 @@ const NewBlog = () => {
             //value={author}
             name="author"
             //onChange={handleChange}
+            required
           />
         </div>
-        <div>
+        <div className='form__group'>
           <label htmlFor="url">Url</label>
           <input
             id="url"
@@ -64,13 +66,16 @@ const NewBlog = () => {
             //value={url}
             name="url"
             //onChange={handleChange}
+            required
           />
         </div>
-        <div>
-          <button type="submit">Create</button>
+        <div className='form__group form__group--submit'>
+          <button className='button button--primary' type="submit">Create</button>
         </div>
       </form>
-    </div>
+      </div>
+    </section>
+    </>
   )
 }
 
