@@ -22,7 +22,7 @@ const User = ({ user }) => {
             <LogoutButton handleLogout={handleLogout} />
             
           </div>
-        : <Link className='button button--link' to={'/login'}>
+        : <Link className='button button--secondary' to={'/login'}>
             Login
           </Link>
       }
