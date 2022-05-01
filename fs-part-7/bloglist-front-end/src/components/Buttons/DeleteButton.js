@@ -24,7 +24,7 @@ const DeleteButton = ({ id }) => {
 
 
   return (
-    <button className='button' onClick={() => remove(id)}>
+    <button className='button button--tertiary' onClick={() => remove(id)}>
       Delete
     </button>
   )

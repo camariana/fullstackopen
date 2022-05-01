@@ -12,8 +12,6 @@ import { selectUser } from '../../redux/reducers/users/userSlice'
 const Header = () => {
   const user = useSelector(selectUser)
 
-  console.log(user);
-
   return (
     <header className='header'>
       <div className='header__contain'>
