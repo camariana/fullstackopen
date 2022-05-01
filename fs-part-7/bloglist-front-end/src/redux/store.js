@@ -4,7 +4,7 @@ import blogReducer from './reducers/blogs/blogsSlice'
 import userReducer from './reducers/users/userSlice'
 import usersReducer from './reducers/users/usersSlice'
 import notificationReducer from './reducers/notification/notificationSlice'
-
+import commentsReducer from './reducers/comments/commentsSlice'
 
 
 const store = configureStore({
@@ -12,7 +12,8 @@ const store = configureStore({
     blogs: blogReducer,
     users: usersReducer,
     user: userReducer,
-    notification: notificationReducer
+    notification: notificationReducer,
+    comments: commentsReducer
   }
 })
 
