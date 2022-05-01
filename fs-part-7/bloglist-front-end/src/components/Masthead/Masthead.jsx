@@ -3,22 +3,33 @@ import React from 'react'
 const Masthead = () => {
   return (
     <div className='masthead' role='banner'>
-      <div className="avatar">
-        <span>AC</span>
+      <div className='masthead__contain'>
+
+        <div className="masthead__avatar">
+          <span>AC</span>
+        </div>
+
+        <div className="masthead__text">
+          <h1 className='masthead__title'>Peace, I'm A Camariana</h1>
+          <p className='masthead__subtitle'>
+            This is where I blog about interesting things on the web and my experience learning Full Stack Open (React, Redux, Node.js, MongoDB, GraphQL and TypeScript in one go!). 
+          </p>
+
+          <figure className="quote">
+            <blockquote>
+              <p>
+                You are always going to be wrong in someone's opinion
+              </p>
+            </blockquote>
+            <figcaption className="quote__citation">
+                  —
+                  <span> Matti Luukkainen</span>        
+                  <span>University lecturer and software developer</span>        
+            </figcaption>
+          </figure>
+
+        </div>
       </div>
-      <h1>Peace, I'm A Camariana</h1>
-      <p>
-        This is where I blog about interesting things on the web and my experience learning Full Stack Open (React, Redux, Node.js, MongoDB, GraphQL and TypeScript in one go!). 
-      </p>
-
-      <blockquote>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore beatae ea mollitia deleniti praesentium blanditiis fugiat facere cupiditate ipsam, quas cumque vitae nesciunt aut doloremque velit tenetur aperiam amet possimus.
-        </p>
-
-        <cite>Matti Lukuuni</cite>
-
-      </blockquote>
     </div>
   )
 }
