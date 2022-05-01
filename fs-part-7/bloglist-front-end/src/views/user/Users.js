@@ -23,24 +23,26 @@ const Users = () => {
     <>
       <Banner title={title} description={description} />
       <main>
-        <ul className='list'>
-          {
-            users.map(user =>
-              <li className='list__item' key={user.id}>
-                <Link to={`/users/${user.id}`}>
-                  <div className='list__primary'>
-                    <h2>
-                      {user.name}
-                    </h2>
-                  </div>
-                  <div className='list__secondary'>
-                    {user.blogs.length}
-                  </div>
-                </Link>
-              </li>          
-            )
-          }
-        </ul>
+        <div className='contain contain--alt'>
+          <ul className='list list--inline'>
+            {
+              users.map(user =>
+                <li className='list__item' key={user.id}>
+                  <Link to={`/users/${user.id}`}>
+                    <div className='list__primary'>
+                      <h2>
+                        {user.name}
+                      </h2>
+                    </div>
+                    <div className='list__secondary'>
+                      {user.blogs.length}
+                    </div>
+                  </Link>
+                </li>          
+              )
+            }
+          </ul>
+        </div>
       </main>
     </>
   )
