@@ -41,34 +41,38 @@ const Login = () => {
   }
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin} className="form">
-        <div className='form__group'>
-            <label htmlFor="username">Username</label>
-            <input
-              id="username"
-              type="text"
-              value={username}
-              name="username"
-              onChange={({ target }) => setUsername(target.value)}
-            />
-          </div>
+    <>
+    <section className='center-page'>
+      <div className='center-page__inner'>
+        <h2 className='center-page__title'>Login</h2>
+        <form onSubmit={handleLogin} className="form">
           <div className='form__group'>
-            <label htmlFor="password">Password</label>
-            <input
-              id="password"
-              type="password"
-              value={password}
-              name="password"
-              onChange={({ target }) => setPassword(target.value)}
-            />
-          </div>
-          <div className='form__group form__group--submit'>
-            <button type="submit">Login</button>
-          </div>
-      </form>
-    </div>
+              <label htmlFor="username">Username</label>
+              <input
+                id="username"
+                type="text"
+                value={username}
+                name="username"
+                onChange={({ target }) => setUsername(target.value)}
+              />
+            </div>
+            <div className='form__group'>
+              <label htmlFor="password">Password</label>
+              <input
+                id="password"
+                type="password"
+                value={password}
+                name="password"
+                onChange={({ target }) => setPassword(target.value)}
+              />
+            </div>
+            <div className='form__group form__group--submit'>
+              <button className='button button--primary' type="submit">Login</button>
+            </div>
+        </form>
+      </div>
+    </section>
+    </>
   )
 }
 
