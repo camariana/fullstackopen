@@ -11,6 +11,7 @@ import Blog from './views/blog/Blog'
 import Users from './views/user/Users'
 import User from './views/user/User'
 import Login from './views/login/Login'
+import NewBlog from './views/blog/AddBlogForm'
 
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
         <Routes>
           <Route path='/login' element={<Login />} />
           
+          <Route path='/create' element={<NewBlog />} />
           <Route path='/blogs/:id' element={<Blog />} />
           <Route path='/blogs' element={<Blogs />} />
           
