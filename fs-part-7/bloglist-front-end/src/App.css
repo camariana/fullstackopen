@@ -276,6 +276,30 @@ pre {
   color: var(--button-canvas);
 }
 
+.button--icon {
+  padding: 0;
+  border-radius: 4px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button--icon svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--neutral-80);
+}
+
+.button--icon:hover {
+  background-color: var(--neutral-20);
+}
+
+.button--icon:hover svg {
+  fill: var(--neutral-90);
+}
+
 
 .button--fab {
   background-color: var(--button-canvas);
@@ -427,6 +451,7 @@ pre {
   position: relative;
   z-index: 100;
   margin-block-start: 0.8rem;
+  display: flex;
 }
 
 .list--inline {
