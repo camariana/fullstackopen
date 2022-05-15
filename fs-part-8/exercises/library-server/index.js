@@ -139,8 +139,11 @@ const resolvers = {
 
   Query: {
     bookCount: () => books.length,
+    
     authorCount: () => authors.length,
+    
     //allBooks: () => books,
+    
     allBooks: (root, args) => {
       let output = books
 
@@ -153,7 +156,9 @@ const resolvers = {
       }
       return output
     },
+    
     allAuthors: () => authors,
+    
     findAuthor: (root, args) => {
       return  authors.find(author => author.name === args.name)
     }
