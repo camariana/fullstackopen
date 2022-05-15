@@ -1,20 +1,14 @@
 import React from 'react'
 import { useState } from 'react'
-import { gql, useQuery } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 
-const FIND_PERSON = gql`
-  query findPersonByName($nameToSearch: String!) {
-    findPerson(name: $nameToSearch) {
-      name
-      phone
-      id
-      address {
-        street
-        city
-      }
-    }
-  }
-`
+import { FIND_PERSON } from '../queries'
+
+/* 
+  1.  One possibility for this kind of situations is the hook function useLazyQuery that would make it possible to define a 
+      query which is executed when the user wants to see the detailed information of a person.
+      However, in our case we can stick to useQuery and use the option skip, which makes it possible to do the query only if a set condition is true.
+*/
 
 const Person = ({ person, onClose }) => {
   return (
@@ -35,7 +29,7 @@ const Persons = ({ persons }) => {
 
   const result = useQuery(FIND_PERSON, {
     variables: { nameToSearch },
-    skip: !nameToSearch
+    skip: !nameToSearch // 1
   })
 
   if (nameToSearch && result.data) {
